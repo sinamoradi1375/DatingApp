@@ -1,9 +1,12 @@
-
 @import "../node_modules/bootstrap-v4-rtl/dist/css/bootstrap.min.css";
 @import "../node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
-@import "./assets/Fonts.css";
+/* @import "./assets/Fonts.css"; */
+@font-face {
+  font-family: "IRANSansWeb_UltraLight";
+  src: url("./assets/fonts/ttf/IRANSansWeb_UltraLight.ttf") format("truetype");
+}
 
 body *:not(.fa):not(.glyphicon) {
-    font-family: "IRANSansWeb_UltraLight" !important;
+  font-family: "IRANSansWeb_UltraLight" !important;
 }
