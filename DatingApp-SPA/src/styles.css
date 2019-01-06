@@ -1,7 +1,10 @@
 @import "../node_modules/bootstrap-v4-rtl/dist/css/bootstrap.min.css";
 @import "../node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css";
+@import "../node_modules/bootswatch/dist/united/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
-/* @import "./assets/Fonts.css"; */
+@import "../node_modules/alertifyjs/build/css/alertify.rtl.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.rtl.min.css";
+
 @font-face {
   font-family: "IRANSansWeb_UltraLight";
   src: url("./assets/fonts/ttf/IRANSansWeb_UltraLight.ttf") format("truetype");
