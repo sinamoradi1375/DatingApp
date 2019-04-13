@@ -17,5 +17,6 @@ export class AuthGuard implements CanActivate {
 
     this.alertify.error('خطا! برای استفاده از اپلیکیشن ابتدا باید وارد شوید.');
     this.router.navigate(['']);
+    return false;
   }
 }
