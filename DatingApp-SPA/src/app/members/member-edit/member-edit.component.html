@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+    <h1>پروفایل شما</h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong>پیام سیستم:</strong> شما تغییرات ایجاد کرده اید. هرگونه تغییرات دخیره نشده از بین خواهد رفت!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.knownAs}}">
+        <div class="card-body">
+          <div>
+            <strong>موقعیت:</strong>
+            <p>{{user.province}}, {{user?.city}}</p>
+          </div>
+          <div>
+            <strong>سن:</strong>
+            <p>{{user.age}}</p>
+          </div>
+          <div>
+            <strong>آخرین بازدید:</strong>
+            <p>{{user.lastActive}}</p>
+          </div>
+          <div>
+            <strong>تاریخ عضویت:</strong>
+            <p>{{user.createdDate}}</p>
+          </div>
+          <div class="card-footer">
+              <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">ذخیره</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="ویرایش پروفایل">
+            <form #editForm="ngForm" (ngSubmit)="updateUser()" id="editForm">
+                <h4>جزئیات</h4>
+                <textarea name="introduction" rows="6" class="form-control"
+                [(ngModel)]="user.introduction"></textarea>
+                <h4>به دنبال</h4>
+                <textarea name="lookingFor" rows="6" class="form-control"
+                [(ngModel)]="user.lookingFor"></textarea>
+                <h4>علاقه مندی ها</h4>
+                <textarea name="interests" rows="6" class="form-control"
+                [(ngModel)]="user.interests"></textarea>
+                <h4>جزئیات محل زندگی</h4>
+                <div class="form-inline">
+                    <label for="province">استان</label>
+                    <input type="text" class="form-control" name="province"
+                    [(ngModel)]="user.province">
+                  <label for="city">شهر</label>
+                  <input type="text" class="form-control" name="city"
+                  [(ngModel)]="user.city">
+                </div>
+            </form>
+            
+          </tab>
+          <tab heading="ویرایش عکس ها">
+            <p>ویرایش عکس ها اینجا میرن</p>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
