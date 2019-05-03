@@ -44,6 +44,11 @@ export class RegisterComponent implements OnInit {
     // }, (error: any) => {
     //   this.alertify.error(error);
     // });
+
+
+    // this paragraph is test for testing branches in git
+
+
     console.log(this.registerForm.value);
   }
 
