@@ -6,3 +6,13 @@ input[type=radio] {
     position: relative;
     top: 4px;
 }
+
+#datePickerError {
+    margin-bottom: 38px;
+    margin-top: -20px;
+}
+
+#datePickerContainer {
+    max-height: 37px !important;
+    overflow: visible;
+}

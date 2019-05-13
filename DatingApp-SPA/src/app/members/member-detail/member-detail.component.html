@@ -1,27 +1,31 @@
 <div class="container mt-4">
   <div class="row">
-    <h1>پروفایل {{user.knownAs}}</h1>
+    <h1>پروفایل {{ user.knownAs }}</h1>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.knownAs}}">
+        <img
+          class="card-img-top img-thumbnail"
+          src="{{ user.photoUrl || '../../../assets/user.png' }}"
+          alt="{{ user.knownAs }}"
+        />
         <div class="card-body">
           <div>
             <strong>محل زندگی:</strong>
-            <p>{{user.province}}, {{user?.city}}</p>
+            <p>{{ user.province }}, {{ user.city }}</p>
           </div>
           <div>
             <strong>سن:</strong>
-            <p>{{user.age}}</p>
+            <p>{{ user.age }}</p>
           </div>
           <div>
             <strong>آخرین بازدید:</strong>
-            <p>{{user.lastActive}}</p>
+            <p>{{ user.lastActive | persianTimeAgo }}</p>
           </div>
           <div>
             <strong>تاریخ عضویت:</strong>
-            <p>{{user.createdDate}}</p>
+            <p>{{ user.createdDate }}</p>
           </div>
           <div class="card-footer">
             <div class="btn-group d-flex">
@@ -35,18 +39,40 @@
     <div class="col-sm-8">
       <div class="tab-panel">
         <tabset class="member-tabset">
-          <tab heading="درباره‌ی {{user?.knownAs}}">
+          <tab heading="درباره‌ی {{ user.knownAs }}">
             <h4>جزئیات</h4>
-            <p>{{user.introduction}}</p>
+
+            <p *ngIf="user.introduction != null; else nullText">
+              {{ user.introduction }}
+            </p>
+            <ng-template #nullText
+              ><div class="alert alert-info">
+                اطلاعاتی وارد نشده است
+              </div></ng-template
+            >
             <h4>به دنبال</h4>
-            <p>{{user.lookingFor}}</p>
+            <p *ngIf="user.introduction != null; else nullText">
+              {{ user.lookingFor }}
+            </p>
           </tab>
           <tab heading="علاقه مندی ها">
             <h4>علاقه مندی ها</h4>
-            <p>{{user.interests}}</p>
+            <p *ngIf="user.introduction != null; else nullText">
+              {{ user.interests }}
+            </p>
           </tab>
           <tab heading="عکس ها">
-            <ngx-gallery id="mamad" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            <ngx-gallery
+              *ngIf="user.photos.length != 0; else nullPhotos"
+              id="mamad"
+              [options]="galleryOptions"
+              [images]="galleryImages"
+            ></ngx-gallery>
+            <ng-template #nullPhotos
+              ><div class="alert alert-info">
+                این کاربر عکسی بارگذاری نکرده است
+              </div></ng-template
+            >
           </tab>
           <tab heading="پیام ها">
             <p>پیام ها اینجا نمایش داده میشوند</p>

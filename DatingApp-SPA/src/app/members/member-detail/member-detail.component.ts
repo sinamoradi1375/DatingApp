@@ -4,6 +4,7 @@ import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-member-detail',
@@ -16,7 +17,7 @@ export class MemberDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
 
   constructor(private userService: UserService,
-     private alertify: AlertifyService, private route: ActivatedRoute) { }
+    private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -35,6 +36,8 @@ export class MemberDetailComponent implements OnInit {
     ];
 
     this.galleryImages = this.getImages();
+
+    this.user.createdDate = (moment(this.user.createdDate, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')); // 1367/11/04
   }
 
   getImages() {

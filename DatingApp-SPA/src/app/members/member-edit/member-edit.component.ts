@@ -5,6 +5,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/_services/user.service';
 import { AuthService } from 'src/app/_services/auth.service';
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-member-edit',
@@ -32,6 +33,8 @@ export class MemberEditComponent implements OnInit {
       this.user = data['user'];
     });
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+
+    this.user.createdDate = (moment(this.user.createdDate, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD'));
   }
 
   updateUser() {
