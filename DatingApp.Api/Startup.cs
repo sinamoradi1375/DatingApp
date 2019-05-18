@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using DatingApp.Api.Helpers;
 using AutoMapper;
-using DatingApp.API.Helpers;
 
 namespace DatingApp.API
 {

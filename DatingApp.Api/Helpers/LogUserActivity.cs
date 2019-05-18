@@ -5,7 +5,7 @@ using DatingApp.Api.Data;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DatingApp.API.Helpers
+namespace DatingApp.Api.Helpers
 {
     public class LogUserActivity : IAsyncActionFilter
     {
