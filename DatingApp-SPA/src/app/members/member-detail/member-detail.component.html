@@ -30,7 +30,7 @@
           <div class="card-footer">
             <div class="btn-group d-flex">
               <button class="btn btn-primary w-100">لایک</button>
-              <button class="btn btn-success w-100">ارسال پیام</button>
+              <button class="btn btn-success w-100" (click)="selectTab(3)">ارسال پیام</button>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
     </div>
     <div class="col-sm-8">
       <div class="tab-panel">
-        <tabset class="member-tabset">
+        <tabset class="member-tabset" #memberTabs>
           <tab heading="درباره‌ی {{ user.knownAs }}">
             <h4>جزئیات</h4>
 
@@ -75,7 +75,7 @@
             >
           </tab>
           <tab heading="پیام ها">
-            <p>پیام ها اینجا نمایش داده میشوند</p>
+            <app-member-messages [recipientID]="user.id"></app-member-messages>
           </tab>
         </tabset>
       </div>

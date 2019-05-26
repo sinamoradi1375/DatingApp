@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-body">
+    <div *ngIf="messages.length === 0">
+       <p>پیامی برای نمایش وجود ندارد... برای ارسال پیام از باکس پایین استفاده کنید</p>
+    </div>
+
+    <ul class="chat">
+      <li *ngFor="let item of messages">
+        <!-- to them -->
+        <div *ngIf="item.senderID == recipientID">
+          <span class="chat-img float-right">
+            <img src="{{item.senderPhotoUrl}}" alt="{{item.senderKnownAs}}" class="rounded-circle">
+          </span>
+          <div class="chat-body">
+             <div class="header">
+               <strong class="primary-font">{{item.senderKnownAs}}</strong>
+               <small class="text-muted float-left">
+                 <span class="fa fa-clock-o"></span> {{item.messageSent | persianTimeAgo}}
+               </small>
+             </div>
+             <p>{{item.content}}</p>
+          </div>
+        </div>
+
+        <!-- to me -->
+        <div *ngIf="item.senderID != recipientID">
+          <span class="chat-img float-left">
+            <img src="{{item.senderPhotoUrl}}" alt="{{item.senderKnownAs}}" class="rounded-circle">
+          </span>
+          <div class="chat-body">
+             <div class="header">
+                <small class="text-muted">
+                    <span class="fa fa-clock-o"></span> {{item.messageSent | persianTimeAgo}}
+                    <span *ngIf="!item.isRead" class="text-danger">(خوانده نشده)</span>
+                    <span *ngIf="item.isRead" class="text-success">(خوانده شده {{item.dateRead | persianTimeAgo}})</span>
+
+                  </small>
+               <strong class="primary-font float-left">{{item.senderKnownAs}}</strong>
+               
+             </div>
+             <p>{{item.content}}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+  <div class="card-footer">
+    <form #messageFrom="ngForm" (ngSubmit)="messageFrom.valid && sendMessage()">
+      <div class="input-group">
+        <input type="text" 
+              class="form-control input-sm"
+              [(ngModel)]="newMessage.content"
+              required
+              name="content"
+              placeholder="پیام خود را وارد کنید">
+        <div class="input-group-append">
+          <button class="btn btn-primary" [disabled]="!messageFrom.valid">ارسال</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
