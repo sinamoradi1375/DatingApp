@@ -54,6 +54,37 @@ export class UserService {
     );
   }
 
+  getUserLikeesAndLikers(page?, itemsPerPage?, likesParam?): Observable<PaginatedResult<User[]>> {
+    const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
+
+    let params = new HttpParams();
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+
+    if (likesParam === 'Likers') {
+      params = params.append('likers', 'true');
+    }
+
+    if (likesParam === 'Likees') {
+      params = params.append('likees', 'true');
+    }
+
+   return this.http.get<User[]>(this.baseUrl + 'users/GetUserLikeesAndLikers', {observe: 'response', params})
+    .pipe(
+      map(response => {
+        paginatedResult.result = response.body;
+        if (response.headers.get('Pagination') != null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+
+        return paginatedResult;
+      })
+    );
+  }
+
   getUser(id): Observable<User> {
    return this.http.get<User>(this.baseUrl + 'users/' + id);
   }

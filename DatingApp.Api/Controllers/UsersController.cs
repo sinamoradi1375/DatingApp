@@ -49,6 +49,25 @@ namespace DatingApp.Api.Controllers
             return Ok(usersToReturn);
         }
 
+        [HttpGet("GetUserLikeesAndLikers")]
+        public async Task<IActionResult> GetUserLikeesAndLikers([FromQuery]UserParams userParams)
+        {
+            var currentUserID = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userFromRepo = await _repo.GetUser(currentUserID);
+
+            userParams.UserID = currentUserID;
+
+            var users = await _repo.GetUserLikeesAndLikers(userParams);
+
+            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
+
+            return Ok(usersToReturn);
+        }
+
+
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {

@@ -93,6 +93,32 @@ namespace DatingApp.Api.Data
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
+
+        //test
+        public async Task<PagedList<User>> GetUserLikeesAndLikers(UserParams userParams)
+        {
+            var users = _context.Users.Include(x => x.Photos).OrderByDescending(x => x.LastActive).AsQueryable();
+
+            users = users.Where(x => x.ID != userParams.UserID);
+
+            if (userParams.Likers)
+            {
+                var userLikers = await GetUserLikes(userParams.UserID, userParams.Likers);
+                users = users.Where(x => userLikers.Contains(x.ID));
+            }
+
+            if (userParams.Likees)
+            {
+                var userLikees = await GetUserLikes(userParams.UserID, userParams.Likers);
+                users = users.Where(x => userLikees.Contains(x.ID));
+            }
+
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
+        }
+        //test
+
+
+
         private async Task<IEnumerable<int>> GetUserLikes(int id, bool likers)
         {
             var user = await _context.Users

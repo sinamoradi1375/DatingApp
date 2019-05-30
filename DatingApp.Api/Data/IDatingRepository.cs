@@ -11,6 +11,7 @@ namespace DatingApp.Api.Data
          void Delete<T>(T entity) where T: class;
          Task<bool> SaveAll();
          Task<PagedList<User>> GetUsers(UserParams userParams);
+         Task<PagedList<User>> GetUserLikeesAndLikers(UserParams userParams);
          Task<User> GetUser(int id);
          Task<Photo> GetPhoto(int id);
          Task<Photo> GetMainPhotoForUser(int userID);
