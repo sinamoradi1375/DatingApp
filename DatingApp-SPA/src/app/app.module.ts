@@ -9,6 +9,16 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { DpDatePickerModule } from 'ng2-jalali-date-picker';
 import { PersianTimeAgoPipe } from 'persian-time-ago-pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule,
+   MatToolbarModule,
+   MatSidenavModule,
+   MatIconModule,
+   MatListModule,
+   MatMenuModule,
+   MatFormFieldModule,
+   MatInputModule } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -34,6 +44,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { MaterialNavbarComponent } from './material-navbar/material-navbar.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -53,12 +64,15 @@ export function tokenGetter() {
     MemberEditComponent,
     PhotoEditorComponent,
     PersianTimeAgoPipe,
-    MemberMessagesComponent
+    MemberMessagesComponent,
+    MaterialNavbarComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     DpDatePickerModule,
@@ -74,7 +88,15 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:5000'],
         blacklistedRoutes: ['localhost:5000/api/auth']
       }
-    })
+    }),
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     AuthService,

@@ -1,0 +1,90 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="false"
+    [ngClass]="{ hidden: !(isHandset | async)!.matches }"
+    [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+    [opened]="!(isHandset | async)!.matches"
+  >
+    <mat-toolbar color="primary">منو</mat-toolbar>
+    <mat-nav-list *ngIf="loggedIn()">
+      <a mat-list-item [routerLink]="['/members']">کاربران</a>
+      <a mat-list-item [routerLink]="['/events']">رویدادها</a>
+      <a mat-list-item [routerLink]="['/messages']">پیام ها</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset | async)!.matches"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span>شبکه اجتماعی من</span>
+      <mat-nav-list *ngIf="loggedIn()">
+        <a routerLinkActive="sm-active" [routerLink]="['/members']">کاربران</a>
+        <a routerLinkActive="sm-active" [routerLink]="['/events']">رویداد ها</a>
+        <a routerLinkActive="sm-active" [routerLink]="['/messages']">پیام ها</a>
+      </mat-nav-list>
+
+      <button *ngIf="loggedIn()" mat-button [matMenuTriggerFor]="menu">
+        Menu
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+      <span class="col-md-5"></span>
+      <form *ngIf="!loggedIn()" #loginForm="ngForm" (ngSubmit)="login()">
+        <mat-form-field class="col-md-4" [floatLabel]="'never'">
+          <mat-label>نام کاربری</mat-label>
+          <input
+            matInput
+            required
+            [(ngModel)]="model.username"
+            name="username"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4" [floatLabel]="'never'">
+          <input
+            matInput
+            placeholder="رمز عبور"
+            [type]="hide ? 'password' : 'text'"
+            [(ngModel)]="model.password"
+            required
+            name="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          [disabled]="!loginForm.valid"
+          type="submit"
+          class="col-md-2"
+        >
+          ورود
+        </button>
+      </form>
+
+      
+
+      <!--  -->
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

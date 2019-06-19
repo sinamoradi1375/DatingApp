@@ -4,17 +4,27 @@
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
 @import "../node_modules/alertifyjs/build/css/alertify.rtl.min.css";
 @import "../node_modules/alertifyjs/build/css/themes/bootstrap.rtl.min.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @font-face {
   font-family: "IRANSansWeb_UltraLight";
   src: url("./assets/fonts/ttf/IRANSansWeb_UltraLight.ttf") format("truetype");
 }
 
-body *:not(.fa):not(.glyphicon) {
+body *:not(.fa):not(.glyphicon):not(.mat-icon):not(.material-icons) {
   font-family: "IRANSansWeb_UltraLight" !important;
 }
 
+html, body {
+  height: 100%;
+}
 
+body {
+  margin: 0;
+}
+
+
+/* >> Tab Panel Styles */
 .tab-panel {
   border: 1px solid #ddd;
   padding: 10px;
@@ -59,4 +69,14 @@ body *:not(.fa):not(.glyphicon) {
   border: 0;
   border-top: 1px solid #eee;
   padding: 15px 0;
+}
+
+
+.cdk-overlay-connected-position-bounding-box { 
+  direction: ltr !important;
+  margin-top: 40px;
+}
+
+.mat-form-field-label-wrapper {
+  text-align: right; 
 }

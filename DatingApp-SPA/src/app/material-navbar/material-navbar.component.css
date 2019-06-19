@@ -1,0 +1,64 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+.hidden {
+  display: none;
+}
+
+mat-toolbar a {
+  display: inline-block; 
+  margin: 0 16px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 16px;
+}
+
+mat-toolbar a:hover {
+  color: rgba(255,255,255,0.8);
+}
+
+.sm-active {
+  color: white !important;
+}
+
+mat-toolbar {
+  padding: 0 10%;
+}
+
+mat-nav-list {
+  padding: 0;
+  margin-right: 3%;
+}
+
+/*  */
+/* 
+.spacer {
+  flex: 1 1 auto;
+} */
+/* 
+.dropdown-toggle, .dropdown-item {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  margin-top: 15px;
+  color: black !important;
+} */
+
+img {
+  max-height: 50px;
+  border: 2px solid white;
+  display: inline;
+  border-radius: 50px;
+}
+
+.mat-form-field {
+  text-align: right;
+  font-size: 16px;
+}

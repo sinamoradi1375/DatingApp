@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
 import { AlertifyService } from '../_services/alertify.service';
+import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  selector: 'app-material-navbar',
+  templateUrl: './material-navbar.component.html',
+  styleUrls: ['./material-navbar.component.css']
 })
-export class NavComponent implements OnInit {
+export class MaterialNavbarComponent implements OnInit {
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
   model: any = {};
   photoUrl: string;
+  hide = true;
 
-  constructor(public authService: AuthService, private alertify: AlertifyService,
-    private router: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService,
+     private alertify: AlertifyService, private router: Router) {}
 
   ngOnInit() {
     this.authService.currentPhotoUrl.subscribe(res => this.photoUrl = res);
