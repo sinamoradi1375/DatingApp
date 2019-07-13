@@ -1,3 +1,168 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" *ngIf="!loggedIn()" [routerLink]="['']">شبکه اجتماعی من</a> -->
+    <!-- the line below was commented earlier -->
+    <!-- <a class="navbar-brand" *ngIf="loggedIn()" [routerLink]="['']">خوش آمدید {{ authService.decodedToken.unique_name | titlecase }}</a> -->
+    <!-- <a class="navbar-brand" href="#">
+      <img src="{{photoUrl  ||'../../assets/user.png'}}" class="d-inline-block align-top xs-navbar-image" alt="">
+      <span class="navbar-profile-name"><i class="fas fa-crown"></i>{{ authService.decodedToken.unique_name | titlecase }}<i class="fas fa-crown"></i></span>
+    </a> -->
+
+
+
+<!-- 
+    <ul class="navbar-nav mr-auto d-none d-lg-block">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/members']">کاربران</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/events']">رویداد ها</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/messages']">پیام ها</a>
+      </li>
+    </ul> -->
+
+
+    <!-- <div class="dropdown d-none d-lg-block" dropdown>
+        <span class="mr-2">
+          <img src="{{photoUrl  ||'../../assets/user.png'}}" alt="" class="lg-navbar-image">
+        </span>
+        <a class="dropdown-toggle text-light" dropdownToggle
+          >خوش آمدید {{ authService.decodedToken.unique_name | titlecase }}
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+          <a class="dropdown-item" [routerLink]="['/member/edit']">
+            <i class="fa fa-user"></i> ویرایش حساب کاربری</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()"
+            ><i class="fa fa-sign-out"></i> خروج</a
+          >
+        </div>
+      </div>
+
+      <form
+      #loginForm="ngForm"
+      *ngIf="loggedIn()"
+      class="form-inline my-2 my-lg-0 d-none d-lg-block"
+      (ngSubmit)="login()"
+    >
+      <input
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="نام کاربری"
+        [(ngModel)]="model.username"
+        required
+        name="username"
+      />
+      <input
+        class="form-control mr-sm-2"
+        type="password"
+        placeholder="رمز عبور"
+        [(ngModel)]="model.password"
+        required
+        name="password"
+      />
+      <button
+        [disabled]="!loginForm.valid"
+        class="btn btn-success my-2 my-sm-0"
+        type="submit"
+      >
+        ورود
+      </button>
+    </form>
+
+
+
+
+
+
+
+
+    <button
+      class="navbar-toggler"
+      (click)="toggleCollapse()"
+      type="button"
+    >
+      <span [hidden]="collapse == 'open'" class="fa fa-ellipsis-h fa-lg"></span>
+      <span [hidden]="collapse == 'closed'" class="fa fa-times fa-lg"></span>
+    </button>
+
+    <div class="collapse show" [@collapse]="collapse">
+      <ul class="navbar-nav" *ngIf="loggedIn()">
+        <li class="nav-item" routerLinkActive="active sm-nav-active">
+          <a class="nav-link" [routerLink]="['/members']"><i class="fa fa-users sm-nav-icon"></i>کاربران </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active sm-nav-active">
+          <a class="nav-link" [routerLink]="['/events']"><i class="fa fa-list sm-nav-icon"></i>رویداد ها </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active sm-nav-active">
+          <a class="nav-link" [routerLink]="['/messages']"><i class="fa fa-inbox sm-nav-icon"></i> پیام ها</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active sm-nav-active">
+          <a class="nav-link" [routerLink]="['/member/edit']"><i class="fa fa-user sm-nav-icon"></i> ویرایش حساب کاربری</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active sm-nav-active">
+          <a class="nav-link" (click)="logout()"
+              ><i class="fa fa-sign-out"></i> خروج</a
+            >
+        </li>
+      </ul> -->
+<!-- 
+
+      <div class="dropdown" dropdown *ngIf="loggedIn()">
+          <span class="mr-2">
+            <img src="{{photoUrl  ||'../../assets/user.png'}}" alt="">
+          </span>
+          <a class="dropdown-toggle text-light" dropdownToggle
+            >خوش آمدید {{ authService.decodedToken.unique_name | titlecase }}
+          </a>
+          <div class="dropdown-menu" *dropdownMenu>
+            <a class="dropdown-item" [routerLink]="['/member/edit']">
+              <i class="fa fa-user"></i> ویرایش حساب کاربری</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()"
+              ><i class="fa fa-sign-out"></i> خروج</a
+            >
+          </div>
+        </div> -->
+
+        <!-- <form
+        #loginForm="ngForm"
+        *ngIf="!loggedIn()"
+        class="form-inline my-2 my-lg-0"
+        (ngSubmit)="login()"
+      >
+        <input
+          class="form-control mr-sm-2 mobile-login-input"
+          type="text"
+          placeholder="نام کاربری"
+          [(ngModel)]="model.username"
+          required
+          name="username"
+        />
+        <input
+          class="form-control mr-sm-2 mobile-login-input"
+          type="password"
+          placeholder="رمز عبور"
+          [(ngModel)]="model.password"
+          required
+          name="password"
+        />
+        <button
+          [disabled]="!loginForm.valid"
+          class="btn btn-success my-2 my-sm-0"
+          type="submit"
+        >
+          ورود
+        </button>
+      </form>
+
+
+    </div>
+  </div>
+</nav> -->
+
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['']">شبکه اجتماعی من</a>
